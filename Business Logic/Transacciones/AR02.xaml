@@ -1,0 +1,672 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AR02" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_StrSociedad" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_Transaccion" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrAnalisisType" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrLayout" Type="InArgument(x:String)" />
+    <x:Property Name="out_BoolProcess" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1198,8127</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Python.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="AR02" sap:VirtualizedContainerService.HintSize="876,8022" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:Char[]" Name="arrayCharDelims" />
+      <Variable x:TypeArguments="scg:List(s:String[])" Name="listDownloadData" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtReadDownloadData" />
+      <Variable x:TypeArguments="x:String" Name="strTextClipBoard" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: SAP Easy Access  -  Menú usuario p. USUARIO PRUEBAS" sap:VirtualizedContainerService.HintSize="834,7930" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="800,7641" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'OkCodeField okcd'" sap:VirtualizedContainerService.HintSize="758,526" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Timeout="10" Version="V1">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,310" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'OkCodeField okcd'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="40, 107, 156, 24" ElementType="InputBox" FriendlyName="'OkCodeField okcd'" FullSelectorArgument="&lt;sap id='tbar[0]/okcd' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/okcd' /&gt;" Guid="69a94fb2-14d3-497f-aaed-b08bcdcc96f5" InformativeScreenshot="a72d9a963e51800c2d89cd0440cd067f.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='SAP Easy Access  -  Menú usuario p. USUARIO PRUEBAS' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.Text>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">in_Config["TransactionAR02"].ToString() + "[k(enter)]"</mca:CSharpValue>
+                      </InArgument>
+                    </uix:NTypeInto.Text>
+                  </uix:NTypeInto>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="250,116" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw sap:VirtualizedContainerService.HintSize="208,22" sap2010:WorkflowViewState.IdRef="Throw_1">
+                    <InArgument x:TypeArguments="s:Exception">
+                      <mca:CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">new BusinessRuleException("No se cargo SAP correctamente")</mca:CSharpValue>
+                    </InArgument>
+                  </Throw>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="40, 107, 156, 24" ElementType="InputBox" FriendlyName="'OkCodeField okcd'" FullSelectorArgument="&lt;sap id='tbar[0]/okcd' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/okcd' /&gt;" Guid="279324ac-107a-4443-8b34-77eececaf258" InformativeScreenshot="855c4f0c2cb1cc339bacaa794a58e20c.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='SAP Easy Access  -  Menú usuario p. USUARIO PRUEBAS' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Button Traer'" sap:VirtualizedContainerService.HintSize="758,1234" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Timeout="10" Version="V1">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,1018" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'CO11'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="360, 164, 73, 25" ElementType="InputBox" FriendlyName="'CO11'" FullSelectorArgument="&lt;sap id='usr/ctxtBUKRS-LOW' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtBUKRS-LOW' /&gt;" Guid="52d9fbde-cf3f-4499-af1b-ba7fcf4614b6" InformativeScreenshot="235d90727e58be50ee68251d0298a342.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Cuadro de activos fijos' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.Text>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">in_StrSociedad</mca:CSharpValue>
+                      </InArgument>
+                    </uix:NTypeInto.Text>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into '31.12.2022'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="360, 676, 109, 25" ElementType="InputBox" FriendlyName="'31.12.2022'" FullSelectorArgument="&lt;sap id='usr/ctxtBERDATUM' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtBERDATUM' /&gt;" Guid="88bcb4b9-23c9-4c0d-afe7-d5d048f05f34" InformativeScreenshot="5212a8a679a86f4e5f07e8e88c3880d4.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Cuadro de activos fijos' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.Text>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">DateTime.Now.AddDays(-DateTime.Now.Day).ToString("dd.MM.yyyy")</mca:CSharpValue>
+                      </InArgument>
+                    </uix:NTypeInto.Text>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into '0001'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="360, 716, 49, 25" ElementType="InputBox" FriendlyName="'0001'" FullSelectorArgument="&lt;sap id='usr/ctxtPA_GITVS' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtPA_GITVS' /&gt;" Guid="c6688ef4-067b-47d2-ac3a-211ea12bc754" InformativeScreenshot="3183dc5232289ed705149806172f3d3e.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Cuadro de activos fijos' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.Text>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">in_Config["OtrasParametriAR02"].ToString()</mca:CSharpValue>
+                      </InArgument>
+                    </uix:NTypeInto.Text>
+                  </uix:NTypeInto>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Ejecutar'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="1849, 1007, 63, 26" ElementType="Button" FriendlyName="'Ejecutar'" FullSelectorArgument="&lt;sap id='tbar[1]/btn[8]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[1]/btn[8]' check:text='Ejecutar' /&gt;" Guid="70bf14be-1008-4068-9fa6-8d382a83180e" InformativeScreenshot="a9ed415d67642bdde31d6dd1407445f3.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Cuadro de activos fijos' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="250,116" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw sap:VirtualizedContainerService.HintSize="208,22" sap2010:WorkflowViewState.IdRef="Throw_2">
+                    <InArgument x:TypeArguments="s:Exception">
+                      <mca:CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">new BusinessRuleException("No se pudo acceder a la transacción AR02")</mca:CSharpValue>
+                    </InArgument>
+                  </Throw>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="407, 107, 26, 26" ElementType="Button" FriendlyName="'Button Traer'" FullSelectorArgument="&lt;sap id='tbar[1]/btn[17]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[1]/btn[17]' /&gt;" Guid="49d68a08-ff5d-440b-a107-3efda993c4b0" InformativeScreenshot="7ec6abe6618cfba476569e09d4178ba1.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Cuadro de activos fijos' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Button Fichero'" sap:VirtualizedContainerService.HintSize="758,466" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Timeout="300" Version="V1">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Button Seleccionar'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="884, 107, 26, 26" ElementType="Button" FriendlyName="'Button Seleccionar'" FullSelectorArgument="&lt;sap id='tbar[1]/btn[33]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[1]/btn[33]' /&gt;" Guid="48a2d9ed-ad78-4129-9902-969e7cbc5f63" InformativeScreenshot="951af214b1d82d8efda79ad672ed69b1.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Cuadro de activos fijos' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="250,116" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw sap:VirtualizedContainerService.HintSize="208,22" sap2010:WorkflowViewState.IdRef="Throw_5">
+                    <InArgument x:TypeArguments="s:Exception">
+                      <mca:CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">new BusinessRuleException("Fallo la ejecución de la transacción")</mca:CSharpValue>
+                    </InArgument>
+                  </Throw>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="716, 107, 26, 26" ElementType="Button" FriendlyName="'Button Fichero'" FullSelectorArgument="&lt;sap id='tbar[1]/btn[9]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[1]/btn[9]' /&gt;" Guid="1773b7ac-9d42-4ebb-af3a-cc1ee91b60a1" InformativeScreenshot="ff360ca94e4c4a4de4b9bdeb33d776ef.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Cuadro de activos fijos' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Button Tomar (Intro)'" sap:VirtualizedContainerService.HintSize="758,528" sap2010:WorkflowViewState.IdRef="NCheckState_4" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Timeout="10" Version="V1">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,312" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ClickType="Single" DisplayName="Click '/RK02 Z001'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="29, 345, 96, 24" ElementType="Text" FriendlyName="'/RK02 Z001'" FullSelectorArgument="&lt;sap id='usr' /&gt;&lt;sap text='/RK02 Z001' type='GuiLabel' /&gt;" FuzzySelectorArgument="&lt;sap id='usr' /&gt;&lt;sap text='/RK02 Z001' type='GuiLabel' check:text='/RK02 Z001' /&gt;" Guid="659ac5ce-5a96-4e5d-98f4-da487e94f6fd" InformativeScreenshot="fc7fca5c70df45cfe92a32b5fcdbbef9.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Dispos.: Seleccionar' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="250,116" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw sap:VirtualizedContainerService.HintSize="208,22" sap2010:WorkflowViewState.IdRef="Throw_6">
+                    <InArgument x:TypeArguments="s:Exception">
+                      <mca:CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">new BusinessRuleException("Fallo la selección de layout")</mca:CSharpValue>
+                    </InArgument>
+                  </Throw>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="285, 368, 26, 26" ElementType="Button" FriendlyName="'Button Tomar (Intro)'" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="4edd25fb-862e-4120-8193-6bba43636f6e" InformativeScreenshot="64f0b110a48c899c91d7ff89fd2b733a.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Dispos.: Seleccionar' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="758,551" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="596,426" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Button Tomar (Intro)'" sap:VirtualizedContainerService.HintSize="554,332" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                      <uix:NCheckState.IfExists>
+                        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="250,116" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="208,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                        </Sequence>
+                      </uix:NCheckState.IfExists>
+                      <uix:NCheckState.IfNotExists>
+                        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="250,116" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:Break sap:VirtualizedContainerService.HintSize="208,22" sap2010:WorkflowViewState.IdRef="Break_1" />
+                        </Sequence>
+                      </uix:NCheckState.IfNotExists>
+                      <uix:NCheckState.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="285, 368, 26, 26" ElementType="Button" FriendlyName="'Button Tomar (Intro)'" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="c84a8ef6-2335-473c-b492-ed89af932aa3" InformativeScreenshot="9c59c47ff688bf703e01ee3145ac79d8.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Dispos.: Seleccionar' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                      </uix:NCheckState.Target>
+                    </uix:NCheckState>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <ui:ForEach.Values>
+                <InArgument x:TypeArguments="sc:IEnumerable">
+                  <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">Enumerable.Range(0,20)</mca:CSharpValue>
+                </InArgument>
+              </ui:ForEach.Values>
+            </ui:ForEach>
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Button Fichero'" sap:VirtualizedContainerService.HintSize="758,466" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Timeout="300" Version="V1">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Button Fichero'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="716, 107, 26, 26" ElementType="Button" FriendlyName="'Button Fichero'" FullSelectorArgument="&lt;sap id='tbar[1]/btn[9]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[1]/btn[9]' /&gt;" Guid="2e4ceb8b-5acd-45b6-a199-dab07c354b94" InformativeScreenshot="23f19e47ed30c938611b8ad5117f7533.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Cuadro de activos fijos' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="250,84" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="716, 107, 26, 26" ElementType="Button" FriendlyName="'Button Fichero'" FullSelectorArgument="&lt;sap id='tbar[1]/btn[9]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[1]/btn[9]' /&gt;" Guid="70e6b755-42d6-429b-a1a0-9efbc26e1e5f" InformativeScreenshot="ff360ca94e4c4a4de4b9bdeb33d776ef.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Cuadro de activos fijos' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Texto con tabuladores'" sap:VirtualizedContainerService.HintSize="758,662" sap2010:WorkflowViewState.IdRef="NCheckState_7" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Timeout="300" Version="V1">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,446" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Texto con tabuladores'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="41, 237, 229, 25" FriendlyName="'Texto con tabuladores'" FullSelectorArgument="&lt;sap id='usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]' check:text='Texto con tabuladores' /&gt;" Guid="191ebbc1-370d-4f93-818b-02dffb131716" InformativeScreenshot="7ca11abb79ce7bbf89cd14b396345a70.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Grabar lista fichero...' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Button Continuar (Intro)'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="321, 400, 26, 26" ElementType="Button" FriendlyName="'Button Continuar (Intro)'" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" Guid="5e3bd9be-5043-4b3f-912f-a2baf57cb12b" InformativeScreenshot="e40c42f4ee513cb6526543b8bca9f134.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Grabar lista fichero...' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="250,116" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw sap:VirtualizedContainerService.HintSize="208,22" sap2010:WorkflowViewState.IdRef="Throw_3">
+                    <InArgument x:TypeArguments="s:Exception">
+                      <mca:CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">new BusinessRuleException("No se puso acceder a la descarga del archivo en la transacción AR02")</mca:CSharpValue>
+                    </InArgument>
+                  </Throw>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="41, 237, 229, 25" FriendlyName="'Texto con tabuladores'" FullSelectorArgument="&lt;sap id='usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[1,0]' check:text='Texto con tabuladores' /&gt;" Guid="d4133de1-3fed-478c-9059-e529aa0634b7" InformativeScreenshot="056c67a7df4869eb8f3485cb36cdf82f.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Grabar lista fichero...' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Crear'" sap:VirtualizedContainerService.HintSize="758,978" sap2010:WorkflowViewState.IdRef="NCheckState_8" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Timeout="300" Version="V1">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,762" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'C:\Users\rpdadm\Documen…'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_6" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="141, 77, 533, 25" ElementType="InputBox" FriendlyName="'C:\Users\rpdadm\Documen…'" FullSelectorArgument="&lt;sap id='usr/ctxtDY_PATH' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtDY_PATH' /&gt;" Guid="0f0d0d13-deab-40bf-a1ab-ba1d13b28f78" InformativeScreenshot="dc78d95460ab3de7320a834265fd9cfd.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Cuadro de activos fijos' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.Text>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">in_Config["RutaArchivosGenerados"].ToString()</mca:CSharpValue>
+                      </InArgument>
+                    </uix:NTypeInto.Text>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'AR02.xls'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,216" sap2010:WorkflowViewState.IdRef="NTypeInto_5" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="141, 109, 533, 25" ElementType="InputBox" FriendlyName="'AR02.xls'" FullSelectorArgument="&lt;sap id='usr/ctxtDY_FILENAME' /&gt;" FuzzySelectorArgument="&lt;sap id='usr/ctxtDY_FILENAME' /&gt;" Guid="00b9b03e-b942-4aa1-9a24-9785b5b68cdf" InformativeScreenshot="07d4273e48c1a2c768c45cd8191ce0fa.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Cuadro de activos fijos' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NTypeInto.Target>
+                    <uix:NTypeInto.Text>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">in_StrAnalisisType+"_AR02_"+in_StrSociedad+".csv"</mca:CSharpValue>
+                      </InArgument>
+                    </uix:NTypeInto.Text>
+                  </uix:NTypeInto>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Crear'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="633, 205, 49, 26" ElementType="Button" FriendlyName="'Crear'" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' check:text='Crear' /&gt;" Guid="d5cae0c1-2357-44be-bb1e-2656ac65875d" InformativeScreenshot="532ebe107caba71424fe0ab2185773e3.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Cuadro de activos fijos' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="250,116" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw sap:VirtualizedContainerService.HintSize="208,22" sap2010:WorkflowViewState.IdRef="Throw_4">
+                    <InArgument x:TypeArguments="s:Exception">
+                      <mca:CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">new BusinessRuleException("No se puso acceder a la descarga del archivo en la transacción AR02")</mca:CSharpValue>
+                    </InArgument>
+                  </Throw>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="633, 205, 49, 26" ElementType="Button" FriendlyName="'Crear'" FullSelectorArgument="&lt;sap id='tbar[0]/btn[0]' /&gt;" FuzzySelectorArgument="&lt;sap id='tbar[0]/btn[0]' check:text='Crear' /&gt;" Guid="4041cfdb-840e-479b-b69b-e1c92533a73c" InformativeScreenshot="1c31e09b536fed114686179514c14199.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Cuadro de activos fijos' idx='*' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="758,685" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="722,560" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Seguridad SAP GUI'" sap:VirtualizedContainerService.HintSize="680,466" sap2010:WorkflowViewState.IdRef="NCheckState_9" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Timeout="5" Version="V1">
+                      <uix:NCheckState.IfExists>
+                        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NClick ClickType="Double" DisplayName="Click 'Seguridad SAP GUI'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="00a6bfca-c062-4540-8aed-b5c85674f2da" Version="V1">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable DesignTimeRectangle="0, 0, 605, 333" FriendlyName="'Seguridad SAP GUI'" Guid="391bd8ae-0b5f-487e-b569-176c34558abd" ImageBase64="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" InformativeScreenshot="16ef876165d32165c0d33f9a9e56ef87.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Seguridad SAP GUI' idx='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive">
+                                <uix:TargetAnchorable.FuzzySelectorArgument>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                </uix:TargetAnchorable.FuzzySelectorArgument>
+                                <uix:TargetAnchorable.PointOffset>
+                                  <uix:PointOffset Position="BottomLeft" X="70" Y="-33" />
+                                </uix:TargetAnchorable.PointOffset>
+                              </uix:TargetAnchorable>
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                        </Sequence>
+                      </uix:NCheckState.IfExists>
+                      <uix:NCheckState.IfNotExists>
+                        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="250,116" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:Break sap:VirtualizedContainerService.HintSize="208,22" sap2010:WorkflowViewState.IdRef="Break_3" />
+                        </Sequence>
+                      </uix:NCheckState.IfNotExists>
+                      <uix:NCheckState.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="0, 0, 605, 333" FriendlyName="'Seguridad SAP GUI'" Guid="80907a95-131b-40af-a3df-93e12de5ac14" ImageBase64="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" InformativeScreenshot="bea6dd53069d789b543dc3f05b4f2285.png" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='#32770' title='Seguridad SAP GUI' idx='*' /&gt;" SearchSteps="Selector, FuzzySelector" Visibility="Interactive">
+                          <uix:TargetAnchorable.FuzzySelectorArgument>
+                            <InArgument x:TypeArguments="x:String">
+                              <Literal x:TypeArguments="x:String" Value="" />
+                            </InArgument>
+                          </uix:TargetAnchorable.FuzzySelectorArgument>
+                        </uix:TargetAnchorable>
+                      </uix:NCheckState.Target>
+                    </uix:NCheckState>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <ui:ForEach.Values>
+                <InArgument x:TypeArguments="sc:IEnumerable">
+                  <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">Enumerable.Range(0,60)</mca:CSharpValue>
+                </InArgument>
+              </ui:ForEach.Values>
+            </ui:ForEach>
+            <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="758,595" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="695,470" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If sap:VirtualizedContainerService.HintSize="653,376" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If.Condition>
+                        <InArgument x:TypeArguments="x:Boolean">
+                          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">!File.Exists(Path.Combine(in_Config["RutaArchivosGenerados"].ToString(),in_StrAnalisisType+"_AR02_"+in_StrSociedad+".csv"))</mca:CSharpValue>
+                        </InArgument>
+                      </If.Condition>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="304,217" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">
+                                <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">out_BoolProcess</mca:CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="304,217" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">
+                                <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">out_BoolProcess</mca:CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:Break sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="Break_2" />
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <ui:ForEach.Values>
+                <InArgument x:TypeArguments="sc:IEnumerable">
+                  <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">Enumerable.Range(0,300)</mca:CSharpValue>
+                </InArgument>
+              </ui:ForEach.Values>
+            </ui:ForEach>
+            <If sap:VirtualizedContainerService.HintSize="758,304" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">!out_BoolProcess</mca:CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="242,116" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Throw sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_7">
+                    <InArgument x:TypeArguments="s:Exception">
+                      <mca:CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">new BusinessRuleException("Falla en la descarga del archivo para el analisis: "+in_StrAnalisisType+" la transacción AR02 y la sociedad: "+in_StrSociedad)</mca:CSharpValue>
+                    </InArgument>
+                  </Throw>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_27">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke WriteDataDownloadIputFile workflow" sap:VirtualizedContainerService.HintSize="758,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Business Logic\\WriteDataDownloadIputFile.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_IntRemoveColumns">
+                  <Literal x:TypeArguments="x:Int32" Value="2" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_IntRemoveDataRows">
+                  <Literal x:TypeArguments="x:Int32" Value="4" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_StrAnalisisType">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">in_StrAnalisisType</mca:CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                  <mca:CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_55">in_Config</mca:CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_StrSheetName">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">in_StrSociedad</mca:CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_StrOutputExcelFile">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_57">Path.Combine(in_Config["RutaArchivosGenerados"].ToString(),in_StrAnalisisType+"AR02"+".xlsx")</mca:CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_StrCopyFile">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_58">Path.Combine(in_Config["CarpetaCompartida"].ToString(),in_StrAnalisisType, DateTime.Now.ToString("yyyy/MM").Replace("/","\\"),in_StrAnalisisType+"AR02"+".xlsx")</mca:CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_StrPathReadFileText">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_59">Path.Combine(in_Config["RutaArchivosGenerados"].ToString(),in_StrAnalisisType+"_AR02_"+in_StrSociedad+".csv")</mca:CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_StrSociedad">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_60">in_StrSociedad</mca:CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:Boolean" x:Key="bool_FiltroF01">
+                  <Literal x:TypeArguments="x:Boolean" />
+                </InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1056" FilePath="C:\\Program Files (x86)\\SAP\\FrontEnd\\SapGui\\saplogon.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE1SURBVFhHY/j//z/jQOJRB4w6YNQBA+8Ap5rV7E7Vqw8OCK5ZU8jgVL2GE8j4PwB4rXPtGsGBcgDIcmFIFNDfAXDLwQ44dOqipWP16v+O1auohFcDLQFhwpaDHfD20/fP9198/E8NvPf8vf9+DTBHELYc7ID3X37+pwY+e/Pxf7+K2f/tShdhcwBWy6nmgAu3n/73Lp3x37Z4AbYoWA+0XBCb5SBMsQPOAy33LJ72365kITafr3epW4vTchCmyAEgn3uWTIdavgrZ4r/EWA7CDA+evy1tW7Lvf8uiXSTi3f99yoFxToHlIMxglTuD075i2X/78qUkY4fK5ejBDrbcuQ53nKNjahZEUJ8TbzkIU8sBJPschqnlAKLjHB1TXh3XrJlJruUgPNoiGnXAqANGugP+MwIA+QFnw3tJZtEAAAAASUVORK5CYII=" InformativeScreenshot="89f7a8d8d5e8aadc2e8fbc9ad4e119d6.png" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='SAP Easy Access  -  Menú usuario p. USUARIO PRUEBAS' /&gt;" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
