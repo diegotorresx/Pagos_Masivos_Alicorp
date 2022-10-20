@@ -3,6 +3,7 @@
   "description": "Robotic Enterprise Framework",
   "main": "Main.xaml",
   "dependencies": {
+    "Alphabet.Workflow.Activities": "[3.2.0]",
     "Aspose.Cells": "[22.9.0]",
     "UiPath.Database.Activities": "[1.6.1]",
     "UiPath.Excel.Activities": "[2.12.3]",

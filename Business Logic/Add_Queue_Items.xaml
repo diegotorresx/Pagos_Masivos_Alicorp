@@ -6,7 +6,7 @@
     <x:Property Name="dtDataToProcess" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>569,1469</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1259,1922</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -41,6 +41,7 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Globalization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -79,15 +80,20 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.Python</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Add_Queue_Items" sap:VirtualizedContainerService.HintSize="526,1404" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Add_Queue_Items" sap:VirtualizedContainerService.HintSize="693,1857" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="variable1" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If sap2010:Annotation.AnnotationText="Overwrite queue name from in configuration file in case the argument in_OrchestratorQueueName is specified.&#xA;This provides backward compatibility with &lt; 2018.3." DisplayName="If in_OrchestratorQueueName is specified" sap:VirtualizedContainerService.HintSize="484,324" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="Overwrite queue name from in configuration file in case the argument in_OrchestratorQueueName is specified.&#xA;This provides backward compatibility with &lt; 2018.3." DisplayName="If in_OrchestratorQueueName is specified" sap:VirtualizedContainerService.HintSize="651,324" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">! string.IsNullOrWhiteSpace(in_OrchestratorQueueName)</mca:CSharpValue>
@@ -113,7 +119,7 @@
         </Assign>
       </If.Then>
     </If>
-    <If sap2010:Annotation.AnnotationText="Overwrite folder name from in configuration file in case the argument in_OrchestratorQueueFolder is specified.&#xA;This provides backward compatibility with &lt; 2018.3." DisplayName="If in_OrchestratorQueueFolder is specified" sap:VirtualizedContainerService.HintSize="484,324" sap2010:WorkflowViewState.IdRef="If_2">
+    <If sap2010:Annotation.AnnotationText="Overwrite folder name from in configuration file in case the argument in_OrchestratorQueueFolder is specified.&#xA;This provides backward compatibility with &lt; 2018.3." DisplayName="If in_OrchestratorQueueFolder is specified" sap:VirtualizedContainerService.HintSize="651,324" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">! string.IsNullOrWhiteSpace(in_OrchestratorQueueFolder)</mca:CSharpValue>
@@ -141,10 +147,10 @@
         </Assign>
       </If.Then>
     </If>
-    <ui:FilterDataTable DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="484,170" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" SelectColumnsMode="Keep">
+    <ui:FilterDataTable DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="651,170" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" SelectColumnsMode="Keep">
       <ui:FilterDataTable.DataTable>
         <InArgument x:TypeArguments="sd:DataTable">
-          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">dtDataToProcess</mca:CSharpValue>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">dtDataToProcess</mca:CSharpValue>
         </InArgument>
       </ui:FilterDataTable.DataTable>
       <ui:FilterDataTable.Filters>
@@ -154,53 +160,191 @@
       </ui:FilterDataTable.Filters>
       <ui:FilterDataTable.OutputDataTable>
         <OutArgument x:TypeArguments="sd:DataTable">
-          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">dtDataToProcess</mca:CSharpReference>
+          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">dtDataToProcess</mca:CSharpReference>
         </OutArgument>
       </ui:FilterDataTable.OutputDataTable>
       <ui:FilterDataTable.SelectColumns>
         <scg:List x:TypeArguments="InArgument" Capacity="4">
-          <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">"Soc."</mca:CSharpValue>
+          <InArgument x:TypeArguments="x:Int32">
+            <mca:CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">0</mca:CSharpValue>
+          </InArgument>
+          <InArgument x:TypeArguments="x:Int32">
+            <mca:CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_64">2</mca:CSharpValue>
           </InArgument>
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <ui:RemoveDuplicateRows OutputDataTable="{x:Null}" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="484,89" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_1">
+    <ui:RemoveDuplicateRows OutputDataTable="{x:Null}" DisplayName="Remove Duplicate Rows" sap:VirtualizedContainerService.HintSize="651,89" sap2010:WorkflowViewState.IdRef="RemoveDuplicateRows_2">
       <ui:RemoveDuplicateRows.DataTable>
         <InArgument x:TypeArguments="sd:DataTable">
-          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">dtDataToProcess</mca:CSharpValue>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_66">dtDataToProcess</mca:CSharpValue>
         </InArgument>
       </ui:RemoveDuplicateRows.DataTable>
     </ui:RemoveDuplicateRows>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,247" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="651,700" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,122" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="617,575" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="358,32" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal">
+            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="575,32" sap2010:WorkflowViewState.IdRef="AddQueueItem_6" Priority="Normal">
               <ui:AddQueueItem.DueDate>
                 <InArgument x:TypeArguments="s:DateTime">
-                  <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">DateTime.Now.AddDays(1)</mca:CSharpValue>
+                  <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_47">DateTime.Now.AddDays(1)</mca:CSharpValue>
                 </InArgument>
               </ui:AddQueueItem.DueDate>
               <ui:AddQueueItem.ItemInformation>
                 <InArgument x:TypeArguments="x:String" x:Key="Sociedad">
-                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">CurrentRow[0].ToString()</mca:CSharpValue>
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_59">CurrentRow[0].ToString().Trim()</mca:CSharpValue>
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Pais">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_65">CurrentRow[1].ToString().Trim()</mca:CSharpValue>
                 </InArgument>
               </ui:AddQueueItem.ItemInformation>
               <ui:AddQueueItem.QueueType>
                 <InArgument x:TypeArguments="x:String">
-                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">Config["OrchestratorQueueName"].ToString()</mca:CSharpValue>
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_43">Config["OrchestratorQueueName"].ToString()</mca:CSharpValue>
                 </InArgument>
               </ui:AddQueueItem.QueueType>
             </ui:AddQueueItem>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="575,413" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="539,325" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Switch x:TypeArguments="x:String" DisplayName="Switch" sap:VirtualizedContainerService.HintSize="497,235" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                    <Switch.Default>
+                      <Sequence sap:VirtualizedContainerService.HintSize="400,263" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error">
+                          <ui:LogMessage.Message>
+                            <InArgument x:TypeArguments="x:Object">
+                              <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49">"La ejecución del robot no parece ser en un día hábil, validar ejecución ya que este robot sólo ejecuta de lunes a viernes"</mca:CSharpValue>
+                            </InArgument>
+                          </ui:LogMessage.Message>
+                        </ui:LogMessage>
+                        <Throw sap:VirtualizedContainerService.HintSize="358,32" sap2010:WorkflowViewState.IdRef="Throw_1">
+                          <InArgument x:TypeArguments="s:Exception">
+                            <mca:CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_48">new BusinessRuleException("No se puede realizar pagos porque el día no corresponde a un día hábil")</mca:CSharpValue>
+                          </InArgument>
+                        </Throw>
+                      </Sequence>
+                    </Switch.Default>
+                    <Switch.Expression>
+                      <InArgument x:TypeArguments="x:String">
+                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">DateTime.Now.ToString("dddd",new CultureInfo("es-ES"))</mca:CSharpValue>
+                      </InArgument>
+                    </Switch.Expression>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" x:Key="lunes" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="AddQueueItem_2" Priority="Normal">
+                      <ui:AddQueueItem.DueDate>
+                        <InArgument x:TypeArguments="s:DateTime">
+                          <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">DateTime.Now.AddDays(1)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.DueDate>
+                      <ui:AddQueueItem.ItemInformation>
+                        <InArgument x:TypeArguments="x:String" x:Key="Sociedad">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">CurrentRow[0].ToString()</mca:CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Pais">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">CurrentRow[2].ToString()</mca:CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="TipoPago">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">CurrentRow[3].ToString()</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.ItemInformation>
+                      <ui:AddQueueItem.QueueType>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">Config["OrchestratorQueueName"].ToString()</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.QueueType>
+                    </ui:AddQueueItem>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" x:Key="martes" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" Priority="Normal">
+                      <ui:AddQueueItem.DueDate>
+                        <InArgument x:TypeArguments="s:DateTime">
+                          <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">DateTime.Now.AddDays(1)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.DueDate>
+                      <ui:AddQueueItem.ItemInformation>
+                        <InArgument x:TypeArguments="x:String" x:Key="Sociedad">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_50">CurrentRow[0].ToString().Trim()</mca:CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Pais">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_51">CurrentRow[2].ToString().Trim()</mca:CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="TipoPago">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_52">CurrentRow[4].ToString().Trim()</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.ItemInformation>
+                      <ui:AddQueueItem.QueueType>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">Config["OrchestratorQueueName"].ToString()</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.QueueType>
+                    </ui:AddQueueItem>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" x:Key="miercoles" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" Priority="Normal">
+                      <ui:AddQueueItem.DueDate>
+                        <InArgument x:TypeArguments="s:DateTime">
+                          <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">DateTime.Now.AddDays(1)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.DueDate>
+                      <ui:AddQueueItem.ItemInformation>
+                        <InArgument x:TypeArguments="x:String" x:Key="Sociedad">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_55">CurrentRow[0].ToString().Trim()</mca:CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Pais">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">CurrentRow[2].ToString().Trim()</mca:CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="TipoPago">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_53">CurrentRow[5].ToString().Trim()</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.ItemInformation>
+                      <ui:AddQueueItem.QueueType>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">Config["OrchestratorQueueName"].ToString()</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.QueueType>
+                    </ui:AddQueueItem>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" x:Key="jueves" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="AddQueueItem_5" Priority="Normal">
+                      <ui:AddQueueItem.DueDate>
+                        <InArgument x:TypeArguments="s:DateTime">
+                          <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_42">DateTime.Now.AddDays(1)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.DueDate>
+                      <ui:AddQueueItem.ItemInformation>
+                        <InArgument x:TypeArguments="x:String" x:Key="Sociedad">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">CurrentRow[0].ToString().Trim()</mca:CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="Pais">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_57">CurrentRow[2].ToString().Trim()</mca:CSharpValue>
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="TipoPago">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_58">CurrentRow[6].ToString().Trim()</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.ItemInformation>
+                      <ui:AddQueueItem.QueueType>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">Config["OrchestratorQueueName"].ToString()</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AddQueueItem.QueueType>
+                    </ui:AddQueueItem>
+                    <x:Null x:Key="viernes" />
+                  </Switch>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>

@@ -5,9 +5,14 @@
     <x:Property Name="out_DtLog" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_DtSociedadesDiasPago" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_DtSociedadResponsables" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_DtParametrosPagosLocales" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_DtParametrosPagosExterior" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_DtParametrosPagosAnticipos" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_DtParametrosPagosConfirming" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_DtParametrosDetracciones" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1299,719</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1299,794</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -183,11 +188,11 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Comment sap:VirtualizedContainerService.HintSize="1001,65" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Read Matriz cuentas contables" />
+                  <ui:Comment sap:VirtualizedContainerService.HintSize="1001,65" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Read Daily Log" />
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1001,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
                     <ui:LogMessage.Message>
                       <InArgument x:TypeArguments="x:Object">
-                        <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">"Leer archivod e matriz cuentas contables"</mca:CSharpValue>
+                        <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_73">"Leer log diario"</mca:CSharpValue>
                       </InArgument>
                     </ui:LogMessage.Message>
                   </ui:LogMessage>
@@ -389,24 +394,27 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.To>
-                    <State x:Name="__ReferenceID1" DisplayName="2.Parametrico sociedades" sap:VirtualizedContainerService.HintSize="134,71" sap2010:WorkflowViewState.IdRef="State_3">
+                    <State x:Name="__ReferenceID1" DisplayName="2.Parametrico sociedades" sap:VirtualizedContainerService.HintSize="526,2784" sap2010:WorkflowViewState.IdRef="State_3">
                       <State.Entry>
-                        <Sequence sap:VirtualizedContainerService.HintSize="480,1112" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <Sequence sap:VirtualizedContainerService.HintSize="480,2360" sap2010:WorkflowViewState.IdRef="Sequence_7">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,1022" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,2270" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                             <TryCatch.Try>
-                              <Sequence sap:VirtualizedContainerService.HintSize="400,785" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                              <Sequence sap:VirtualizedContainerService.HintSize="400,2033" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Name="variable1" />
+                                </Sequence.Variables>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <ui:Comment sap:VirtualizedContainerService.HintSize="358,65" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Leer tabla de sociedades días de pago" />
-                                <ui:ReadRange Range="{x:Null}" AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="358,97" sap2010:WorkflowViewState.IdRef="ReadRange_2">
+                                <ui:ReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="358,97" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A3:I50">
                                   <ui:ReadRange.DataTable>
                                     <OutArgument x:TypeArguments="sd:DataTable">
                                       <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">out_DtSociedadesDiasPago</mca:CSharpReference>
@@ -438,6 +446,96 @@
                                   <ui:ReadRange.WorkbookPath>
                                     <InArgument x:TypeArguments="x:String">
                                       <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_70">Path.Combine(in_Config["RutaParametrizacion"].ToString(),in_Config["fileSociedades"].ToString())</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.WorkbookPath>
+                                </ui:ReadRange>
+                                <ui:Comment sap:VirtualizedContainerService.HintSize="358,65" sap2010:WorkflowViewState.IdRef="Comment_10" Text="// Leer tabla de parámetros-detracciones" />
+                                <ui:ReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="358,97" sap2010:WorkflowViewState.IdRef="ReadRange_8" Range="A3:E50">
+                                  <ui:ReadRange.DataTable>
+                                    <OutArgument x:TypeArguments="sd:DataTable">
+                                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_29">out_DtParametrosDetracciones</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:ReadRange.DataTable>
+                                  <ui:ReadRange.SheetName>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_75">in_Config["sheetParametros"].ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.SheetName>
+                                  <ui:ReadRange.WorkbookPath>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_74">Path.Combine(in_Config["RutaParametrizacion"].ToString(),in_Config["fileSociedades"].ToString())</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.WorkbookPath>
+                                </ui:ReadRange>
+                                <ui:Comment sap:VirtualizedContainerService.HintSize="358,65" sap2010:WorkflowViewState.IdRef="Comment_11" Text="// Leer tabla de parámetros-PAGOS LOCALES" />
+                                <ui:ReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="358,97" sap2010:WorkflowViewState.IdRef="ReadRange_9" Range="F3:X50">
+                                  <ui:ReadRange.DataTable>
+                                    <OutArgument x:TypeArguments="sd:DataTable">
+                                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_30">out_DtParametrosPagosLocales</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:ReadRange.DataTable>
+                                  <ui:ReadRange.SheetName>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_77">in_Config["sheetParametros"].ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.SheetName>
+                                  <ui:ReadRange.WorkbookPath>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_76">Path.Combine(in_Config["RutaParametrizacion"].ToString(),in_Config["fileSociedades"].ToString())</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.WorkbookPath>
+                                </ui:ReadRange>
+                                <ui:Comment sap:VirtualizedContainerService.HintSize="358,65" sap2010:WorkflowViewState.IdRef="Comment_12" Text="// Leer tabla de parámetros-PAGOS EXTERIOR" />
+                                <ui:ReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="358,97" sap2010:WorkflowViewState.IdRef="ReadRange_10" Range="Y3:AM50">
+                                  <ui:ReadRange.DataTable>
+                                    <OutArgument x:TypeArguments="sd:DataTable">
+                                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_31">out_DtParametrosPagosExterior</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:ReadRange.DataTable>
+                                  <ui:ReadRange.SheetName>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_79">in_Config["sheetParametros"].ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.SheetName>
+                                  <ui:ReadRange.WorkbookPath>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_78">Path.Combine(in_Config["RutaParametrizacion"].ToString(),in_Config["fileSociedades"].ToString())</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.WorkbookPath>
+                                </ui:ReadRange>
+                                <ui:Comment sap:VirtualizedContainerService.HintSize="358,84" sap2010:WorkflowViewState.IdRef="Comment_13" Text="// Leer tabla de parámetros-PAGOS ANTICIPOS" />
+                                <ui:ReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="358,97" sap2010:WorkflowViewState.IdRef="ReadRange_11" Range="AN3:AW50">
+                                  <ui:ReadRange.DataTable>
+                                    <OutArgument x:TypeArguments="sd:DataTable">
+                                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_32">out_DtParametrosPagosAnticipos</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:ReadRange.DataTable>
+                                  <ui:ReadRange.SheetName>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_81">in_Config["sheetParametros"].ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.SheetName>
+                                  <ui:ReadRange.WorkbookPath>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_80">Path.Combine(in_Config["RutaParametrizacion"].ToString(),in_Config["fileSociedades"].ToString())</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.WorkbookPath>
+                                </ui:ReadRange>
+                                <ui:Comment sap:VirtualizedContainerService.HintSize="358,84" sap2010:WorkflowViewState.IdRef="Comment_14" Text="// Leer tabla de parámetros-PAGOS CONFIRMING" />
+                                <ui:ReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="358,97" sap2010:WorkflowViewState.IdRef="ReadRange_12" Range="AX3:BF50">
+                                  <ui:ReadRange.DataTable>
+                                    <OutArgument x:TypeArguments="sd:DataTable">
+                                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_33">out_DtParametrosPagosConfirming</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:ReadRange.DataTable>
+                                  <ui:ReadRange.SheetName>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_83">in_Config["sheetParametros"].ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:ReadRange.SheetName>
+                                  <ui:ReadRange.WorkbookPath>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_82">Path.Combine(in_Config["RutaParametrizacion"].ToString(),in_Config["fileSociedades"].ToString())</mca:CSharpValue>
                                     </InArgument>
                                   </ui:ReadRange.WorkbookPath>
                                 </ui:ReadRange>
@@ -664,7 +762,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <Transition.To>
-                                    <State x:Name="__ReferenceID3" DisplayName="4. Input4" sap:VirtualizedContainerService.HintSize="484,926" sap2010:WorkflowViewState.IdRef="State_8">
+                                    <State x:Name="__ReferenceID3" DisplayName="4. Input4" sap:VirtualizedContainerService.HintSize="134,71" sap2010:WorkflowViewState.IdRef="State_8">
                                       <State.Entry>
                                         <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,502" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                           <TryCatch.Try>
